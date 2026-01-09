@@ -1,0 +1,77 @@
+<h1>Bus Management</h1>
+
+<table border="1" cellpadding="10">
+<tr>
+    <th>ID</th>
+    <th>Bus No</th>
+    <th>Type</th>
+    <th>Depot</th>
+    <th>Fitness Expiry</th>
+    <th>Insurance Expiry</th>
+    <th>Next Service</th>
+    <th>Status</th>
+    <th>Action</th>
+</tr>
+{% for b in buses %}
+<tr>
+
+<td>{{b[0]}}</td>
+<td>{{b[1]}}</td>
+<td>{{b[2]}}</td>
+<td>{{b[3]}}</td>
+
+<!-- FITNESS -->
+<td
+{% if b[4] and b[4] < today %}
+style="color:red;font-weight:bold"
+{% elif b[4] and b[4] <= week_later %}
+style="color:orange;font-weight:bold"
+{% else %}
+style="color:green"
+{% endif %}
+>
+{{b[4]}}
+</td>
+
+<!-- INSURANCE -->
+<td
+{% if b[5] and b[5] < today %}
+style="color:red;font-weight:bold"
+{% elif b[5] and b[5] <= week_later %}
+style="color:orange;font-weight:bold"
+{% else %}
+style="color:green"
+{% endif %}
+>
+{{b[5]}}
+</td>
+
+<!-- NEXT SERVICE -->
+<td
+{% if b[6] and b[6] < today %}
+style="color:red;font-weight:bold"
+{% elif b[6] and b[6] <= week_later %}
+style="color:orange;font-weight:bold"
+{% else %}
+style="color:green"
+{% endif %}
+>
+{{b[6]}}
+</td>
+
+<td>{{b[7]}}</td>
+
+<td>
+<a href="/edit_bus/{{b[0]}}">Edit</a> |
+<a href="/delete_bus/{{b[0]}}" onclick="return confirm('Delete this bus?')">
+Delete
+</a>
+</td>
+
+</tr>
+{% endfor %}
+
+</table>
+
+<br>
+<a href="/dashboard">Back</a>

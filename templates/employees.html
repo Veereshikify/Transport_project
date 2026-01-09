@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Employees</title>
+</head>
+
+<body>
+
+<h1>Employees Page</h1>
+
+<h3>Add Employee</h3>
+<form action="/add_employee" method="post">
+  Name: <input type="text" name="name"><br><br>
+  Role: <input type="text" name="role"><br><br>
+  Phone: <input type="text" name="phone"><br><br>
+  Depot: <input type="text" name="depot"><br><br>
+
+  <button type="submit">Add Employee</button>
+</form>
+
+<br><br>
+
+<h2>Employee List</h2>
+
+<table border="1" cellpadding="10">
+<tr>
+  <th>ID</th>
+  <th>Name</th>
+  <th>Role</th>
+  <th>Phone</th>
+  <th>Depot</th>
+  <th>Actions</th>
+</tr>
+
+{% for emp in employees %}
+<tr>
+  <td>{{ emp[0] }}</td>
+  <td>{{ emp[1] }}</td>
+  <td>{{ emp[2] }}</td>
+  <td>{{ emp[3] }}</td>
+  <td>{{ emp[4] }}</td>
+
+  <td>
+    <a href="/edit_employee/{{emp[0]}}">Edit</a> |
+    <a href="/delete_employee/{{emp[0]}}">Delete</a>
+  </td>
+</tr>
+{% endfor %}
+</table>
+
+<br>
+<a href="/dashboard">Back</a>
+
+</body>
+</html>

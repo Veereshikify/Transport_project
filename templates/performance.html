@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Driver Performance Report</title>
+</head>
+
+<body>
+
+<h1>Driver Performance Report</h1>
+
+<form method="post" action="/performance">
+    Enter Employee ID:
+    <input name="emp_id" required>
+    <button type="submit">Show Report</button>
+</form>
+
+
+{% if data %}
+<br>
+<h2>Result</h2>
+
+<b>Employee ID:</b> {{data.emp_id}} <br>
+<b>Name:</b> {{data.name}} <br>
+<b>Role:</b> {{data.role}} <br>
+<b>Total Attendance Days:</b> {{data.attendance}} <br>
+<b>Total Trips:</b> {{data.trips}} <br>
+<b>Total Passengers:</b> {{data.passengers}} <br>
+<b>Total Collection ₹:</b> {{data.collection}} <br>
+
+<br>
+
+<form action="/performance_pdf" method="post">
+    <input type="hidden" name="emp_id" value="{{data.emp_id}}">
+    <button type="submit">Download PDF Report</button>
+</form>
+
+{% endif %}
+
+<br><br>
+<a href="/dashboard">Back</a>
+
+</body>
+</html>

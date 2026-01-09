@@ -1,0 +1,82 @@
+<h1>Complaint Management</h1>
+
+<h3>Register Complaint</h3>
+
+<form action="/save_complaint" method="post">
+
+Employee ID:
+<input name="emp_id" required><br><br>
+
+Name:
+<input name="name" required><br><br>
+
+Issue:
+<textarea name="issue" required></textarea><br><br>
+
+Pressure Level:
+<input name="pressure"><br><br>
+
+Complaint Against:
+<input name="against"><br><br>
+
+<button type="submit">Submit Complaint</button>
+
+</form>
+
+<hr>
+
+<h2>Complaint Records</h2>
+
+<table border="1" cellpadding="10">
+<tr>
+<th>ID</th>
+<th>Emp ID</th>
+<th>Name</th>
+<th>Issue</th>
+<th>Pressure</th>
+<th>Against</th>
+<th>Date</th>
+<th>Status</th>
+<th>Action</th>
+</tr>
+
+{% for c in data %}
+<tr>
+<td>{{c[0]}}</td>
+<td>{{c[1]}}</td>
+<td>{{c[2]}}</td>
+<td>{{c[3]}}</td>
+<td>{{c[4]}}</td>
+<td>{{c[5]}}</td>
+<td>{{c[6]}}</td>
+
+<td>
+{% if c[7] == 'Pending' %}
+<span style="color:orange;font-weight:bold">{{c[7]}}</span>
+
+{% elif c[7] == 'In Progress' %}
+<span style="color:blue;font-weight:bold">{{c[7]}}</span>
+
+{% elif c[7] == 'Resolved' %}
+<span style="color:green;font-weight:bold">{{c[7]}}</span>
+
+{% elif c[7] == 'Rejected' %}
+<span style="color:red;font-weight:bold">{{c[7]}}</span>
+
+{% else %}
+{{c[7]}}
+{% endif %}
+</td>
+
+<td>
+<a href="/update_complaint/{{c[0]}}/In Progress">In Progress</a> |
+<a href="/update_complaint/{{c[0]}}/Resolved">Resolve</a> |
+<a href="/update_complaint/{{c[0]}}/Rejected">Reject</a>
+</td>
+
+</tr>
+{% endfor %}
+</table>
+
+<br>
+<a href="/dashboard">Back</a>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Edit Employee</title>
+</head>
+
+<body>
+
+<h1>Edit Employee</h1>
+
+<form action="/update_employee/{{emp[0]}}" method="post">
+  Name: <input type="text" name="name" value="{{emp[1]}}"><br><br>
+  Role: <input type="text" name="role" value="{{emp[2]}}"><br><br>
+  Phone: <input type="text" name="phone" value="{{emp[3]}}"><br><br>
+  Depot: <input type="text" name="depot" value="{{emp[4]}}"><br><br>
+
+  <button type="submit">Update</button>
+</form>
+
+<br>
+<a href="/employees">Back</a>
+
+</body>
+</html>

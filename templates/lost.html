@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Lost & Found</title>
+</head>
+
+<body>
+
+<h1>Lost & Found Report</h1>
+
+<form action="/save_lost" method="post">
+  Passenger Name: <input type="text" name="passenger"><br><br>
+  Contact Number: <input type="text" name="contact"><br><br>
+  Lost Item: <input type="text" name="item"><br><br>
+  Bus Number: <input type="text" name="bus"><br><br>
+  More Details:<br>
+  <textarea name="details" rows="4" cols="40"></textarea><br><br>
+
+  <button type="submit">Submit Report</button>
+</form>
+
+<br><br>
+
+<h2>Lost Items List</h2>
+
+<table border="1" cellpadding="10">
+<tr>
+  <th>ID</th>
+  <th>Passenger</th>
+  <th>Contact</th>
+  <th>Item</th>
+  <th>Bus</th>
+  <th>Details</th>
+  <th>Reported By</th>
+  <th>Date & Time</th>
+</tr>
+
+{% for l in data %}
+<tr>
+  <td>{{l[0]}}</td>
+  <td>{{l[1]}}</td>
+  <td>{{l[2]}}</td>
+  <td>{{l[3]}}</td>
+  <td>{{l[4]}}</td>
+  <td>{{l[5]}}</td>
+  <td>{{l[6]}}</td>
+  <td>{{l[7]}}</td>
+</tr>
+{% endfor %}
+</table>
+
+<br>
+<a href="/dashboard">Back</a>
+
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Attendance</title>
+</head>
+
+<body>
+
+<h1>Attendance</h1>
+
+<form action="/mark_in" method="post">
+  Employee ID: <input type="text" name="emp_id"><br><br>
+  Name: <input type="text" name="name"><br><br>
+  <button type="submit">Mark IN</button>
+</form>
+
+<br>
+
+<form action="/mark_out" method="post">
+  Employee ID: <input type="text" name="emp_id"><br><br>
+  Name: <input type="text" name="name"><br><br>
+  <button type="submit">Mark OUT</button>
+</form>
+
+<br><br>
+
+<h2>Attendance Records</h2>
+
+<table border="1" cellpadding="10">
+<tr>
+  <th>ID</th>
+  <th>Employee ID</th>
+  <th>Name</th>
+  <th>Status</th>
+  <th>Time</th>
+</tr>
+
+{% for a in data %}
+<tr>
+  <td>{{a[0]}}</td>
+  <td>{{a[1]}}</td>
+  <td>{{a[2]}}</td>
+  <td>{{a[3]}}</td>
+  <td>{{a[4]}}</td>
+</tr>
+{% endfor %}
+</table>
+
+<br>
+<a href="/dashboard">Back</a>
+
+</body>
+</html>

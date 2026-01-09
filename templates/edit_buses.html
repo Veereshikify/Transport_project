@@ -1,0 +1,26 @@
+<h1>Edit Bus Details</h1>
+
+<form method="post" action="/update_bus/{{bus[0]}}">
+
+Bus No: <input name="bus_no" value="{{bus[1]}}"><br><br>
+Type: <input name="type" value="{{bus[2]}}"><br><br>
+Depot: <input name="depot" value="{{bus[3]}}"><br><br>
+
+Fitness Expiry: <input type="date" name="fitness" value="{{bus[4]}}"><br><br>
+Insurance Expiry: <input type="date" name="insurance" value="{{bus[5]}}"><br><br>
+
+Last Service: <input type="date" name="last" value="{{bus[6]}}"><br><br>
+Next Service: <input type="date" name="next" value="{{bus[7]}}"><br><br>
+
+Status:
+<select name="status">
+<option {% if bus[8]=='Running' %}selected{% endif %}>Running</option>
+<option {% if bus[8]=='In Maintenance' %}selected{% endif %}>In Maintenance</option>
+<option {% if bus[8]=='Broken' %}selected{% endif %}>Broken</option>
+</select><br><br>
+
+<button type="submit">Update</button>
+</form>
+
+<br>
+<a href="/buses">Back</a>

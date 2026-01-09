@@ -1,0 +1,54 @@
+<h1>Bus Trip Entry</h1>
+
+<form action="/save_trip" method="post">
+
+Bus Number:
+<select name="bus">
+{% for b in buses %}
+<option value="{{b[0]}}">{{b[0]}}</option>
+{% endfor %}
+</select>
+<br><br>
+Route: <input name="route"><br><br>
+Driver Name: <input name="driver"><br><br>
+Conductor Name: <input name="conductor"><br><br>
+Passengers: <input name="passengers"><br><br>
+Total Collection ₹: <input name="collection"><br><br>
+
+<button type="submit">Save Trip</button>
+
+</form>
+
+<br><br>
+
+<h2>Trip Records</h2>
+
+<table border="1" cellpadding="10">
+<tr>
+ <th>ID</th>
+ <th>Bus</th>
+ <th>Route</th>
+ <th>Driver</th>
+ <th>Conductor</th>
+ <th>Passengers</th>
+ <th>Collection</th>
+ <th>Date</th>
+</tr>
+
+{% for t in data %}
+<tr>
+ <td>{{t[0]}}</td>
+ <td>{{t[1]}}</td>
+ <td>{{t[2]}}</td>
+ <td>{{t[3]}}</td>
+ <td>{{t[4]}}</td>
+ <td>{{t[5]}}</td>
+ <td>{{t[6]}}</td>
+ <td>{{t[7]}}</td>
+</tr>
+{% endfor %}
+
+</table>
+
+<br>
+<a href="/dashboard">Back</a>
